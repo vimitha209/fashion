@@ -1,0 +1,9 @@
+{
+  "name": "novelle-fashion",
+  "version": "1.0.0",
+  "description": "NOVELLE — Luxury Minimalist Fashion",
+  "scripts": {
+    "start": "node server.js 5500",
+    "build": "echo 'Build complete'"
+  }
+}
