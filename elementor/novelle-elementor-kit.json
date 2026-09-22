@@ -1,0 +1,213 @@
+{
+  "version": "0.4",
+  "title": "NOVELLE - Global Design System Kit",
+  "type": "kit",
+  "page_settings": {
+    "system_colors": [
+      {
+        "_id": "primary",
+        "title": "Primary Text / Espresso",
+        "color": "#231F1E"
+      },
+      {
+        "_id": "secondary",
+        "title": "Secondary Accent / Taupe",
+        "color": "#665549"
+      },
+      {
+        "_id": "text",
+        "title": "Body Text / Muted Brown",
+        "color": "#6E6660"
+      },
+      {
+        "_id": "accent",
+        "title": "Accent / Warm Tan",
+        "color": "#C8B8A6"
+      }
+    ],
+    "custom_colors": [
+      {
+        "_id": "novelle_bg_cream",
+        "title": "Background (Warm Ivory/Cream)",
+        "color": "#FAF7F2"
+      },
+      {
+        "_id": "novelle_bg_secondary",
+        "title": "Soft Beige / Taupe Secondary",
+        "color": "#F2ECE1"
+      },
+      {
+        "_id": "novelle_season_bg",
+        "title": "Warm Terracotta / Taupe Banner",
+        "color": "#836754"
+      },
+      {
+        "_id": "novelle_dark_footer",
+        "title": "Dark Brown Footer",
+        "color": "#221E1C"
+      },
+      {
+        "_id": "novelle_border_light",
+        "title": "Subtle Light Border",
+        "color": "#E5DFD6"
+      },
+      {
+        "_id": "novelle_border_subtle",
+        "title": "Ultra-Subtle Border",
+        "color": "#ECE7E0"
+      },
+      {
+        "_id": "novelle_text_light",
+        "title": "Section Label / Light Text",
+        "color": "#948B83"
+      },
+      {
+        "_id": "novelle_star_gold",
+        "title": "Rating Stars",
+        "color": "#B99156"
+      }
+    ],
+    "system_typography": [
+      {
+        "_id": "primary",
+        "title": "Primary Headings",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "400",
+        "typography_font_size": { "unit": "px", "size": 48 },
+        "typography_line_height": { "unit": "em", "size": 1.15 },
+        "typography_letter_spacing": { "unit": "px", "size": 1.5 }
+      },
+      {
+        "_id": "secondary",
+        "title": "Secondary / Subheadings",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "500",
+        "typography_font_size": { "unit": "px", "size": 28 },
+        "typography_line_height": { "unit": "em", "size": 1.2 },
+        "typography_letter_spacing": { "unit": "px", "size": 1.2 }
+      },
+      {
+        "_id": "text",
+        "title": "Body Text",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "300",
+        "typography_font_size": { "unit": "px", "size": 15 },
+        "typography_line_height": { "unit": "em", "size": 1.65 },
+        "typography_letter_spacing": { "unit": "px", "size": 0.2 }
+      },
+      {
+        "_id": "accent",
+        "title": "Accent Typography",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "400",
+        "typography_font_style": "italic",
+        "typography_font_size": { "unit": "px", "size": 18 }
+      }
+    ],
+    "custom_typography": [
+      {
+        "_id": "novelle_hero_heading",
+        "title": "Hero Large Editorial Heading",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "400",
+        "typography_font_size": { "unit": "px", "size": 64 },
+        "typography_line_height": { "unit": "em", "size": 1.05 },
+        "typography_letter_spacing": { "unit": "px", "size": 2.5 },
+        "typography_text_transform": "uppercase"
+      },
+      {
+        "_id": "novelle_section_title",
+        "title": "Editorial Section Heading",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "400",
+        "typography_font_size": { "unit": "px", "size": 36 },
+        "typography_line_height": { "unit": "em", "size": 1.2 },
+        "typography_letter_spacing": { "unit": "px", "size": 2 },
+        "typography_text_transform": "uppercase"
+      },
+      {
+        "_id": "novelle_section_label",
+        "title": "Small Uppercase Section Label",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "500",
+        "typography_font_size": { "unit": "px", "size": 11 },
+        "typography_line_height": { "unit": "em", "size": 1.4 },
+        "typography_letter_spacing": { "unit": "px", "size": 2.5 },
+        "typography_text_transform": "uppercase"
+      },
+      {
+        "_id": "novelle_navigation",
+        "title": "Navigation Links",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "500",
+        "typography_font_size": { "unit": "px", "size": 12.5 },
+        "typography_line_height": { "unit": "em", "size": 1.2 },
+        "typography_letter_spacing": { "unit": "px", "size": 1.8 },
+        "typography_text_transform": "uppercase"
+      },
+      {
+        "_id": "novelle_buttons",
+        "title": "Buttons",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "500",
+        "typography_font_size": { "unit": "px", "size": 12 },
+        "typography_line_height": { "unit": "em", "size": 1.2 },
+        "typography_letter_spacing": { "unit": "px", "size": 2.2 },
+        "typography_text_transform": "uppercase"
+      },
+      {
+        "_id": "novelle_card_title",
+        "title": "Product & Card Titles",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "400",
+        "typography_font_size": { "unit": "px", "size": 13 },
+        "typography_line_height": { "unit": "em", "size": 1.4 },
+        "typography_letter_spacing": { "unit": "px", "size": 0.4 }
+      },
+      {
+        "_id": "novelle_price",
+        "title": "Price Label",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "600",
+        "typography_font_size": { "unit": "px", "size": 14 },
+        "typography_line_height": { "unit": "em", "size": 1.2 }
+      }
+    ],
+    "container_padding": {
+      "unit": "px",
+      "top": "80",
+      "bottom": "80",
+      "left": "40",
+      "right": "40"
+    },
+    "space_between_widgets": {
+      "unit": "px",
+      "size": 16
+    },
+    "button_border_radius": {
+      "unit": "px",
+      "top": "0",
+      "bottom": "0",
+      "left": "0",
+      "right": "0"
+    },
+    "image_border_radius": {
+      "unit": "px",
+      "top": "0",
+      "bottom": "0",
+      "left": "0",
+      "right": "0"
+    }
+  }
+}

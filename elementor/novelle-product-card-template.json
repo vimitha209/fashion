@@ -1,0 +1,155 @@
+{
+  "version": "0.4",
+  "title": "NOVELLE - Reusable WooCommerce Product Card (Loop Item)",
+  "type": "loop-item",
+  "page_settings": {
+    "custom_css": "\n/* NOVELLE Minimal Editorial Product Card */\n.elementor-element-{{ID}} {\n    transition: transform 0.3s ease;\n}\n.elementor-element-{{ID}} .novelle-img-wrap {\n    position: relative;\n    overflow: hidden;\n    aspect-ratio: 3 / 4;\n}\n.elementor-element-{{ID}} .novelle-img-wrap img {\n    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n}\n.elementor-element-{{ID}}:hover .novelle-img-wrap img {\n    transform: scale(1.045);\n}\n.elementor-element-{{ID}} .novelle-wishlist {\n    position: absolute;\n    top: 8px;\n    right: 8px;\n    width: 30px;\n    height: 30px;\n    border-radius: 50%;\n    background: rgba(255, 255, 255, 0.85);\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: all 0.25s ease;\n    backdrop-filter: blur(4px);\n    z-index: 2;\n}\n.elementor-element-{{ID}} .novelle-wishlist:hover {\n    background: #FFFFFF;\n    color: #B23B3B;\n    transform: scale(1.12);\n}\n.elementor-element-{{ID}} .novelle-add-to-cart a,\n.elementor-element-{{ID}} .novelle-add-to-cart button {\n    background-color: #665549 !important;\n    color: #FFFFFF !important;\n    border-radius: 0px !important;\n    border: 1px solid #665549 !important;\n    font-size: 11px !important;\n    letter-spacing: 2px !important;\n    text-transform: uppercase !important;\n    width: 100% !important;\n    transition: all 0.25s ease !important;\n    min-height: 38px !important;\n    display: inline-flex !important;\n    align-items: center !important;\n    justify-content: center !important;\n}\n.elementor-element-{{ID}} .novelle-add-to-cart a:hover,\n.elementor-element-{{ID}} .novelle-add-to-cart button:hover {\n    background-color: #554438 !important;\n    border-color: #554438 !important;\n    transform: translateY(-1px);\n}\n"
+  },
+  "content": [
+    {
+      "id": "bdf6c6f",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "bottom": "0",
+          "left": "0",
+          "right": "0"
+        },
+        "background_color": "transparent",
+        "border_radius": {
+          "unit": "px",
+          "top": "0",
+          "bottom": "0",
+          "left": "0",
+          "right": "0"
+        }
+      },
+      "elements": [
+        {
+          "id": "fffbcc3",
+          "elType": "container",
+          "settings": {
+            "css_classes": "novelle-img-wrap",
+            "position": "relative",
+            "overflow": "hidden",
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "bottom": "0",
+              "left": "0",
+              "right": "0"
+            },
+            "margin": {
+              "unit": "px",
+              "bottom": "12"
+            }
+          },
+          "elements": [
+            {
+              "id": "99efbe8",
+              "elType": "widget",
+              "widgetType": "theme-post-featured-image",
+              "settings": {
+                "image_size": "large",
+                "link_to": "post"
+              }
+            },
+            {
+              "id": "ac43996",
+              "elType": "widget",
+              "widgetType": "icon",
+              "settings": {
+                "selected_icon": {
+                  "value": "far fa-heart",
+                  "library": "fa-regular"
+                },
+                "size": {
+                  "unit": "px",
+                  "size": 14
+                },
+                "primary_color": "#221E1C",
+                "css_classes": "novelle-wishlist",
+                "link": {
+                  "url": "#wishlist"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a9a5a37",
+          "elType": "widget",
+          "widgetType": "theme-post-title",
+          "settings": {
+            "title_tag": "h3",
+            "link_to": "post",
+            "typography_typography": "custom",
+            "typography_font_family": "Inter",
+            "typography_font_size": {
+              "unit": "px",
+              "size": 13
+            },
+            "typography_font_weight": "400",
+            "title_color": "#221E1C",
+            "margin": {
+              "unit": "px",
+              "bottom": "4"
+            }
+          }
+        },
+        {
+          "id": "a4c463b",
+          "elType": "widget",
+          "widgetType": "woocommerce-product-price",
+          "settings": {
+            "typography_typography": "custom",
+            "typography_font_family": "Inter",
+            "typography_font_size": {
+              "unit": "px",
+              "size": 14
+            },
+            "typography_font_weight": "600",
+            "price_color": "#221E1C",
+            "margin": {
+              "unit": "px",
+              "bottom": "12"
+            }
+          }
+        },
+        {
+          "id": "937c74d",
+          "elType": "widget",
+          "widgetType": "woocommerce-product-add-to-cart",
+          "settings": {
+            "css_classes": "novelle-add-to-cart",
+            "button_background_color": "#665549",
+            "button_text_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "0",
+              "bottom": "0",
+              "left": "0",
+              "right": "0"
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Inter",
+            "typography_font_size": {
+              "unit": "px",
+              "size": 11
+            },
+            "typography_letter_spacing": {
+              "unit": "px",
+              "size": 2
+            },
+            "typography_font_weight": "500"
+          }
+        }
+      ]
+    }
+  ]
+}

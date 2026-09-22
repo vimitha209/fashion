@@ -1,0 +1,57 @@
+/* ==========================================================================
+   NOVELLE Design Tokens & Variables
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-bg-main: #FAF7F2;
+  --color-bg-card: #FFFFFF;
+  --color-bg-soft: #F2ECE1;
+  --color-bg-tertiary: #EBE5DB;
+  --color-bg-dark: #221E1C;
+  --color-bg-dark-accent: #2C2623;
+
+  --color-text-main: #231F1E;
+  --color-text-muted: #6E6660;
+  --color-text-light: #948B83;
+  --color-text-inverse: #FAF7F2;
+  --color-text-inverse-muted: #B8B0A8;
+
+  --color-accent-brown: #665549;
+  --color-accent-brown-hover: #504136;
+  --color-accent-tan: #C8B8A6;
+  --color-border: #E5DFD6;
+  --color-border-light: #ECE7E0;
+  --color-border-dark: #3D3531;
+
+  --color-star: #B99156;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+
+  /* Layout */
+  --max-width-site: 1320px;
+  --header-height: 80px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 8px 30px rgba(35, 31, 30, 0.06);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}

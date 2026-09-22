@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Saved Pieces — Wishlist | NOVELLE</title>
+  <meta name="description" content="View and manage your saved luxury wardrobe pieces in your NOVELLE Wishlist.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            novelle: {
+              cream: '#FAF8F5',
+              soft: '#F3EFEA',
+              sand: '#EAE4DC',
+              border: '#E2DBD2',
+              taupe: '#665549',
+              'taupe-dark': '#4F4137',
+              charcoal: '#1A1A1A',
+              espresso: '#221E1C',
+              gold: '#C5A880',
+              muted: '#716B66'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <base href="/">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-novelle-cream text-novelle-charcoal font-sans antialiased overflow-x-hidden selection:bg-novelle-sand selection:text-novelle-charcoal min-h-screen flex flex-col justify-between">
+
+  <!-- ==========================================================================
+       Header / Navbar
+       ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-novelle-cream/95 backdrop-blur-md border-b border-novelle-border/60 transition-all duration-300" id="siteHeader">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
+      
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center lg:hidden">
+        <button id="mobileMenuBtn" class="p-2 text-novelle-charcoal hover:text-novelle-taupe focus:outline-none transition-colors" aria-label="Open Navigation Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <line x1="3" y1="7" x2="21" y2="7"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Left Links -->
+      <nav class="hidden lg:flex items-center space-x-9 text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal">
+        <a href="/" class="nav-link hover:text-novelle-taupe transition-colors py-1">Home</a>
+        <a href="/#shop" class="nav-link hover:text-novelle-taupe transition-colors py-1">Shop</a>
+        <a href="/#categories" class="nav-link hover:text-novelle-taupe transition-colors py-1">Collections</a>
+      </nav>
+
+      <!-- Centered Logo -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 text-center pointer-events-auto">
+        <a href="/" class="font-serif text-3xl sm:text-4xl tracking-[0.3em] font-normal uppercase text-novelle-charcoal hover:opacity-85 transition-opacity pl-2">
+          NOVELLE
+        </a>
+      </div>
+
+      <!-- Right Action Icons -->
+      <div class="flex items-center space-x-6 sm:space-x-7">
+        <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal mr-2">
+          <a href="/#about" class="nav-link hover:text-novelle-taupe transition-colors py-1">About</a>
+          <a href="/#contact" class="nav-link hover:text-novelle-taupe transition-colors py-1">Contact</a>
+        </nav>
+
+        <!-- Search -->
+        <a href="/search" class="text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1" aria-label="Search Catalog">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Account -->
+        <button id="accountModalBtn" class="text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1 hidden sm:block" aria-label="Account Portal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Wishlist (Active) -->
+        <a href="/wishlist" id="wishlistTriggerBtn" class="relative text-rose-700 transition-transform hover:-translate-y-0.5 p-1" aria-label="View Wishlist">
+          <svg class="w-5 h-5 fill-rose-700 stroke-rose-700" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="wishlistCountBadge" class="absolute -top-1 -right-2 bg-rose-700 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold scale-100 transition-transform duration-200">0</span>
+        </a>
+
+        <!-- Cart Bag -->
+        <a href="/cart" id="cartOpenBtn" class="relative text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1" aria-label="View Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cartCountBadge" class="absolute -top-1 -right-2 bg-novelle-taupe text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-semibold scale-100 transition-transform duration-200">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Wishlist Content
+       ========================================================================== -->
+  <main class="flex-grow py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Breadcrumbs -->
+      <nav class="text-xs uppercase tracking-wider text-novelle-muted mb-8 flex items-center gap-2">
+        <a href="/" class="hover:text-novelle-charcoal transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-novelle-charcoal font-medium">Wishlist</span>
+      </nav>
+
+      <!-- Title & Action Bar -->
+      <div class="flex flex-col sm:flex-row items-baseline justify-between border-b border-novelle-border pb-6 mb-12 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-novelle-muted block mb-1 font-medium">CURATED FAVOURITES</span>
+          <h1 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal uppercase tracking-wide font-normal">
+            SAVED PIECES
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <span id="wishlistCountLabel" class="text-xs uppercase tracking-wider text-novelle-muted">0 Items Saved</span>
+          <button id="clearWishlistBtn" class="text-xs uppercase tracking-wider text-novelle-muted hover:text-rose-600 transition-colors hidden">
+            Clear Wishlist
+          </button>
+        </div>
+      </div>
+
+      <!-- Wishlist Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="wishlistGrid">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="wishlistEmptyState" class="hidden text-center py-20 px-6">
+        <div class="w-16 h-16 rounded-full bg-novelle-soft flex items-center justify-center text-novelle-muted mx-auto mb-4">
+          <svg class="w-8 h-8 text-novelle-muted" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <h3 class="font-serif text-2xl uppercase tracking-wider text-novelle-charcoal mb-2">Your Wishlist is Empty</h3>
+        <p class="text-xs text-novelle-muted font-light max-w-md mx-auto mb-8 leading-relaxed">
+          Save your favorite timeless pieces here as you browse our collections, and easily add them to your shopping bag whenever you're ready.
+        </p>
+        <a href="/#shop" class="inline-flex items-center justify-center px-8 py-3.5 bg-novelle-charcoal hover:bg-novelle-taupe text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors">
+          EXPLORE COLLECTION &nbsp;&rarr;
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Mobile Drawer Component -->
+  <div id="mobileNavBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileNavDrawer" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-novelle-cream shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
+    <div class="p-6 border-b border-novelle-border flex items-center justify-between">
+      <span class="font-serif text-2xl tracking-[0.25em] text-novelle-charcoal">NOVELLE</span>
+      <button id="mobileNavClose" class="p-1 text-novelle-charcoal hover:text-novelle-taupe transition-colors" aria-label="Close Navigation">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="p-6 space-y-5 text-sm uppercase tracking-[0.18em] font-medium text-novelle-charcoal">
+      <a href="/" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Home</a>
+      <a href="/#shop" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Shop</a>
+      <a href="/#categories" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Collections</a>
+      <a href="/wishlist" class="mobile-link block py-1 text-novelle-taupe font-semibold transition-colors">Wishlist</a>
+      <a href="/cart" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Shopping Bag</a>
+      <a href="/#about" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">About Us</a>
+      <a href="/#contact" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="bg-novelle-charcoal text-white pt-16 pb-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 text-center text-xs text-white/50">
+      <a href="/" class="font-serif text-2xl tracking-[0.28em] font-normal uppercase text-white block mb-2">NOVELLE</a>
+      <p class="mb-6 font-light">The Art of Everyday Elegance &middot; Curated Luxury</p>
+      <p>&copy; 2026 NOVELLE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <script src="/js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wishlistGrid = document.getElementById('wishlistGrid');
+      const emptyState = document.getElementById('wishlistEmptyState');
+      const countLabel = document.getElementById('wishlistCountLabel');
+      const clearBtn = document.getElementById('clearWishlistBtn');
+
+      function renderWishlist() {
+        const itemIds = NovelleStore.getWishlist();
+        const count = itemIds.length;
+
+        countLabel.textContent = `${count} Piece${count === 1 ? '' : 's'} Saved`;
+
+        if (count === 0) {
+          wishlistGrid.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+          clearBtn.classList.add('hidden');
+          return;
+        }
+
+        wishlistGrid.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+        clearBtn.classList.remove('hidden');
+
+        wishlistGrid.innerHTML = itemIds.map(id => {
+          const product = NOVELLE_CATALOG[id];
+          if (!product) return '';
+
+          return `
+            <article class="group flex flex-col bg-transparent" data-id="${product.id}">
+              <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+                <a href="/product/${product.id}" class="block w-full h-full">
+                  <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+                </a>
+                <button class="remove-wishlist-item absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white hover:bg-rose-50 text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" data-id="${product.id}" aria-label="Remove from Wishlist">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">${product.categoryLabel}</span>
+              </div>
+              <div class="flex flex-col flex-grow justify-between">
+                <div>
+                  <a href="/product/${product.id}" class="hover:text-novelle-taupe transition-colors">
+                    <h3 class="text-sm font-normal text-novelle-charcoal truncate mb-1">${product.name}</h3>
+                  </a>
+                  <p class="text-sm font-semibold text-novelle-charcoal mb-3">${NovelleStore.formatCurrency(product.price)}</p>
+                </div>
+                <div class="flex gap-2">
+                  <button class="move-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="${product.id}">
+                    MOVE TO BAG
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        // Move to Bag buttons
+        document.querySelectorAll('.move-to-cart-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            NovelleStore.addToCart(id);
+            NovelleStore.toggleWishlist(id);
+            renderWishlist();
+          });
+        });
+
+        // Remove buttons
+        document.querySelectorAll('.remove-wishlist-item').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            NovelleStore.toggleWishlist(id);
+            renderWishlist();
+          });
+        });
+      }
+
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear your saved wishlist?')) {
+          NovelleStore.saveWishlist([]);
+          NovelleStore.showToast('Your wishlist has been cleared.', 'info');
+          renderWishlist();
+        }
+      });
+
+      window.addEventListener('novelle:wishlist_updated', renderWishlist);
+      renderWishlist();
+    });
+  </script>
+</body>
+</html>

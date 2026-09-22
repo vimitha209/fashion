@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Delivery Details | NOVELLE</title>
+  <meta name="description" content="Secure luxury checkout for NOVELLE. Enter your delivery address and contact information.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            novelle: {
+              cream: '#FAF8F5',
+              soft: '#F3EFEA',
+              sand: '#EAE4DC',
+              border: '#E2DBD2',
+              taupe: '#665549',
+              'taupe-dark': '#4F4137',
+              charcoal: '#1A1A1A',
+              espresso: '#221E1C',
+              gold: '#C5A880',
+              muted: '#716B66'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <base href="/">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-novelle-cream text-novelle-charcoal font-sans antialiased overflow-x-hidden selection:bg-novelle-sand selection:text-novelle-charcoal min-h-screen flex flex-col justify-between">
+
+  <!-- Minimal Focused Checkout Header -->
+  <header class="bg-white border-b border-novelle-border/80 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="font-serif text-3xl tracking-[0.28em] font-normal uppercase text-novelle-charcoal">
+        NOVELLE
+      </a>
+      <!-- Step Indicator -->
+      <div class="hidden sm:flex items-center space-x-6 text-xs uppercase tracking-wider">
+        <a href="/cart" class="text-novelle-muted hover:text-novelle-charcoal transition-colors flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] flex items-center justify-center font-bold">✓</span>
+          <span>Bag</span>
+        </a>
+        <span class="text-novelle-border">&rarr;</span>
+        <span class="text-novelle-charcoal font-bold flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-novelle-charcoal text-white text-[10px] flex items-center justify-center font-bold">2</span>
+          <span>Delivery</span>
+        </span>
+        <span class="text-novelle-border">&rarr;</span>
+        <span class="text-novelle-muted flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-novelle-soft text-novelle-muted text-[10px] flex items-center justify-center font-bold">3</span>
+          <span>Payment</span>
+        </span>
+      </div>
+      <div class="text-xs text-novelle-muted flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span class="hidden md:inline">256-Bit SSL Encrypted</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Checkout Content -->
+  <main class="flex-grow py-10 lg:py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        
+        <!-- Left: Delivery Address Form -->
+        <div class="lg:col-span-7 xl:col-span-7">
+          <div class="mb-8">
+            <span class="text-xs uppercase tracking-[0.25em] text-novelle-muted block mb-1 font-medium">STEP 2 OF 3</span>
+            <h1 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal uppercase tracking-wide font-normal">
+              DELIVERY DETAILS
+            </h1>
+          </div>
+
+          <form id="checkoutDeliveryForm" class="space-y-6">
+            
+            <!-- Contact Info -->
+            <div class="bg-white p-6 sm:p-8 border border-novelle-border">
+              <h2 class="font-serif text-xl uppercase tracking-wider text-novelle-charcoal mb-4">Contact Information</h2>
+              <div class="space-y-4">
+                <div>
+                  <label for="checkoutEmail" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">Email Address *</label>
+                  <input type="email" id="checkoutEmail" required placeholder="client@domain.com" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  <p class="text-[10px] text-novelle-muted mt-1">Order receipt and shipment dispatch tracking will be sent here.</p>
+                </div>
+                <div>
+                  <label for="checkoutPhone" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">Phone Number (For Courier Coordination) *</label>
+                  <input type="tel" id="checkoutPhone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                </div>
+              </div>
+            </div>
+
+            <!-- Shipping Address -->
+            <div class="bg-white p-6 sm:p-8 border border-novelle-border">
+              <h2 class="font-serif text-xl uppercase tracking-wider text-novelle-charcoal mb-4">Shipping Destination</h2>
+              <div class="space-y-4">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="firstName" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">First Name *</label>
+                    <input type="text" id="firstName" required placeholder="Aria" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  </div>
+                  <div>
+                    <label for="lastName" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">Last Name *</label>
+                    <input type="text" id="lastName" required placeholder="Vance" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="streetAddress" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">Street Address &amp; House Number *</label>
+                  <input type="text" id="streetAddress" required placeholder="Apartment 4B, Residency Road" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                </div>
+
+                <div>
+                  <label for="apartment" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">Apartment, Suite, Landmark (Optional)</label>
+                  <input type="text" id="apartment" placeholder="Near Kensington Gardens" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label for="city" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">City *</label>
+                    <input type="text" id="city" required placeholder="Bangalore" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  </div>
+                  <div>
+                    <label for="state" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">State *</label>
+                    <input type="text" id="state" required placeholder="Karnataka" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  </div>
+                  <div>
+                    <label for="pincode" class="block text-[11px] uppercase tracking-wider text-novelle-muted mb-1.5 font-medium">PIN Code *</label>
+                    <input type="text" id="pincode" required pattern="[0-9]{6}" maxlength="6" placeholder="560001" class="w-full px-4 py-3 border border-novelle-border text-xs text-novelle-charcoal focus:outline-none focus:border-novelle-taupe transition-colors bg-transparent">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Shipping Speed Selection -->
+            <div class="bg-white p-6 sm:p-8 border border-novelle-border">
+              <h2 class="font-serif text-xl uppercase tracking-wider text-novelle-charcoal mb-4">Delivery Method</h2>
+              <label class="flex items-center justify-between p-4 border border-novelle-charcoal bg-novelle-soft cursor-pointer">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="shippingMethod" checked class="accent-novelle-charcoal">
+                  <div>
+                    <p class="text-xs font-semibold text-novelle-charcoal uppercase tracking-wider">Complimentary Express Courier</p>
+                    <p class="text-[11px] text-novelle-muted font-light">Dispatched within 24h &middot; Estimated delivery: 2-4 business days</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Free</span>
+              </label>
+            </div>
+
+            <!-- Submit Button to Proceed to Payment -->
+            <button type="submit" class="w-full py-4 bg-novelle-charcoal hover:bg-novelle-taupe text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-200 text-center flex items-center justify-center gap-2">
+              <span>PROCEED TO PAYMENT</span>
+              <span>&rarr;</span>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- Right: Order Summary Sidebar -->
+        <div class="lg:col-span-5 xl:col-span-5 bg-white p-6 sm:p-8 border border-novelle-border sticky top-28">
+          <div class="flex items-center justify-between border-b border-novelle-border pb-4 mb-6">
+            <h2 class="font-serif text-2xl uppercase tracking-wide text-novelle-charcoal">
+              YOUR ORDER
+            </h2>
+            <a href="/cart" class="text-xs text-novelle-muted hover:text-novelle-charcoal underline uppercase tracking-wider">
+              Edit Bag
+            </a>
+          </div>
+
+          <!-- Items Mini List -->
+          <div class="divide-y divide-novelle-border/60 max-h-80 overflow-y-auto pr-2 mb-6" id="checkoutItemsList">
+            <!-- Rendered via JS -->
+          </div>
+
+          <!-- Calculation Lines -->
+          <div class="border-t border-novelle-border pt-4 space-y-3 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-novelle-muted uppercase tracking-wider">Subtotal</span>
+              <span id="checkoutSubtotal" class="font-medium text-sm">₹ 0</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-novelle-muted uppercase tracking-wider">Delivery</span>
+              <span class="font-medium text-emerald-700 uppercase tracking-wider">Complimentary</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-novelle-muted uppercase tracking-wider">GST Included</span>
+              <span class="text-novelle-muted">&check;</span>
+            </div>
+          </div>
+
+          <!-- Total -->
+          <div class="border-t border-novelle-border mt-4 pt-4 flex items-baseline justify-between">
+            <span class="font-serif text-lg uppercase tracking-wider text-novelle-charcoal">Total Amount</span>
+            <span id="checkoutTotal" class="font-serif text-2xl font-semibold text-novelle-charcoal">₹ 0</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-novelle-charcoal text-white py-8 mt-auto text-center text-xs text-white/50 border-t border-white/10">
+    <p>&copy; 2026 NOVELLE. All rights reserved. &middot; Secure Checkout</p>
+  </footer>
+
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <script src="/js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = NovelleStore.getCart();
+
+      // Guard empty cart
+      if (cart.length === 0) {
+        alert('Your shopping bag is empty. Please select an item before checking out.');
+        window.location.href = '/cart';
+        return;
+      }
+
+      // Populate Items & Subtotal
+      const itemsList = document.getElementById('checkoutItemsList');
+      const subtotalEl = document.getElementById('checkoutSubtotal');
+      const totalEl = document.getElementById('checkoutTotal');
+
+      itemsList.innerHTML = cart.map(item => `
+        <div class="py-3 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="relative w-14 h-18 bg-novelle-soft overflow-hidden shrink-0 border border-novelle-border">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+              <span class="absolute -top-1 -right-1 bg-novelle-charcoal text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">${item.qty}</span>
+            </div>
+            <div>
+              <h4 class="text-xs font-medium text-novelle-charcoal">${item.name}</h4>
+              <p class="text-[11px] text-novelle-muted uppercase">Size: ${item.size || 'M'}</p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold text-novelle-charcoal">
+            ${NovelleStore.formatCurrency(item.price * item.qty)}
+          </span>
+        </div>
+      `).join('');
+
+      const subtotal = NovelleStore.getCartSubtotal();
+      subtotalEl.textContent = NovelleStore.formatCurrency(subtotal);
+      totalEl.textContent = NovelleStore.formatCurrency(subtotal);
+
+      // Pre-fill previously saved delivery info if any
+      const savedInfo = NovelleStore.getDeliveryInfo();
+      if (savedInfo) {
+        if (savedInfo.email) document.getElementById('checkoutEmail').value = savedInfo.email;
+        if (savedInfo.phone) document.getElementById('checkoutPhone').value = savedInfo.phone;
+        if (savedInfo.firstName) document.getElementById('firstName').value = savedInfo.firstName;
+        if (savedInfo.lastName) document.getElementById('lastName').value = savedInfo.lastName;
+        if (savedInfo.streetAddress) document.getElementById('streetAddress').value = savedInfo.streetAddress;
+        if (savedInfo.apartment) document.getElementById('apartment').value = savedInfo.apartment;
+        if (savedInfo.city) document.getElementById('city').value = savedInfo.city;
+        if (savedInfo.state) document.getElementById('state').value = savedInfo.state;
+        if (savedInfo.pincode) document.getElementById('pincode').value = savedInfo.pincode;
+      }
+
+      // Handle Form Submit -> Route to /payment
+      const form = document.getElementById('checkoutDeliveryForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const deliveryData = {
+          email: document.getElementById('checkoutEmail').value.trim(),
+          phone: document.getElementById('checkoutPhone').value.trim(),
+          firstName: document.getElementById('firstName').value.trim(),
+          lastName: document.getElementById('lastName').value.trim(),
+          streetAddress: document.getElementById('streetAddress').value.trim(),
+          apartment: document.getElementById('apartment').value.trim(),
+          city: document.getElementById('city').value.trim(),
+          state: document.getElementById('state').value.trim(),
+          pincode: document.getElementById('pincode').value.trim()
+        };
+
+        NovelleStore.saveDeliveryInfo(deliveryData);
+        window.location.href = '/payment';
+      });
+    });
+  </script>
+</body>
+</html>

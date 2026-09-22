@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVELLE — The Art of Everyday Elegance | Luxury Minimalist Fashion</title>
+  <meta name="description" content="Discover NOVELLE. Thoughtfully curated luxury women's fashion combining effortless style, timeless elegance, and premium fabrics.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN with custom quiet-luxury config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            novelle: {
+              cream: '#FAF8F5',
+              soft: '#F3EFEA',
+              sand: '#EAE4DC',
+              border: '#E2DBD2',
+              taupe: '#665549',
+              'taupe-dark': '#4F4137',
+              charcoal: '#1A1A1A',
+              espresso: '#221E1C',
+              gold: '#C5A880',
+              muted: '#716B66'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles & Animations -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-novelle-cream text-novelle-charcoal font-sans antialiased overflow-x-hidden selection:bg-novelle-sand selection:text-novelle-charcoal">
+
+  <!-- ==========================================================================
+       1. Sticky Luxury Navigation Bar
+       ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-novelle-cream/95 backdrop-blur-md border-b border-novelle-border/60 transition-all duration-300" id="siteHeader">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
+      
+      <!-- Mobile Menu Button (Hamburger) -->
+      <div class="flex items-center lg:hidden">
+        <button id="mobileMenuBtn" class="p-2 text-novelle-charcoal hover:text-novelle-taupe focus:outline-none transition-colors" aria-label="Open Navigation Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <line x1="3" y1="7" x2="21" y2="7"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Left Navigation Links (Desktop) -->
+      <nav class="hidden lg:flex items-center space-x-9 text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal">
+        <a href="#home" class="nav-link active hover:text-novelle-taupe transition-colors py-1">Home</a>
+        <a href="#shop" class="nav-link hover:text-novelle-taupe transition-colors py-1">Shop</a>
+        <a href="#categories" class="nav-link hover:text-novelle-taupe transition-colors py-1">Collections</a>
+      </nav>
+
+      <!-- Center Brand Logo (Always Centered) -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 text-center pointer-events-auto">
+        <a href="#home" class="font-serif text-3xl sm:text-4xl tracking-[0.3em] font-normal uppercase text-novelle-charcoal hover:opacity-85 transition-opacity pl-2">
+          NOVELLE
+        </a>
+      </div>
+
+      <!-- Right Navigation Links & Action Icons -->
+      <div class="flex items-center space-x-6 sm:space-x-7">
+        <!-- Desktop Page Links -->
+        <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal mr-2">
+          <a href="#about" class="nav-link hover:text-novelle-taupe transition-colors py-1">About</a>
+          <a href="#contact" class="nav-link hover:text-novelle-taupe transition-colors py-1">Contact</a>
+        </nav>
+
+        <!-- Search Icon Button -->
+        <button id="searchOpenBtn" class="text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1" aria-label="Search Catalog">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- User / Account Icon Button -->
+        <button id="accountModalBtn" class="text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1 hidden sm:block" aria-label="Account Portal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Wishlist Link with Counter Badge -->
+        <a href="/wishlist" id="wishlistTriggerBtn" class="relative text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1" aria-label="View Wishlist">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="wishlistCountBadge" class="absolute -top-1 -right-2 bg-rose-700 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold scale-0 transition-transform duration-200">0</span>
+        </a>
+
+        <!-- Shopping Cart Link with Counter Badge -->
+        <a href="/cart" id="cartOpenBtn" class="relative text-novelle-charcoal hover:text-novelle-taupe transition-transform hover:-translate-y-0.5 p-1" aria-label="View Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cartCountBadge" class="absolute -top-1 -right-2 bg-novelle-taupe text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-semibold scale-100 transition-transform duration-200">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. Hero Banner (Editorial Luxury)
+       ========================================================================== -->
+  <section class="relative bg-novelle-charcoal overflow-hidden min-h-[580px] lg:min-h-[660px] flex items-center" id="home">
+    <!-- Hero Background Campaign Image -->
+    <div class="absolute inset-0 z-0">
+      <img src="assets/images/hero.jpg" alt="NOVELLE Everyday Elegance Campaign" class="w-full h-full object-cover object-center lg:object-[center_20%] opacity-90 scale-100 transition-transform duration-1000 ease-out" id="heroImage">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+    </div>
+
+    <!-- Hero Content Overlay (Contained) -->
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 py-20 lg:py-28">
+      <div class="max-w-xl border-l-2 border-white/60 pl-6 sm:pl-8 text-white">
+        <span class="block text-xs uppercase tracking-[0.28em] text-white/90 mb-3 font-medium">THE ART OF</span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl uppercase tracking-wider font-normal leading-[1.08] mb-4 text-white drop-shadow-sm">
+          EVERYDAY<br>ELEGANCE
+        </h1>
+        <p class="text-sm sm:text-base text-white/85 font-light leading-relaxed mb-8 max-w-md">
+          Timeless pieces for modern women. Effortless style, every day.
+        </p>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a href="#shop" class="inline-flex items-center justify-center px-7 py-3.5 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 text-center">
+            SHOP COLLECTION &nbsp;&rarr;
+          </a>
+          <a href="#categories" class="inline-flex items-center justify-center px-7 py-3.5 bg-transparent hover:bg-white hover:text-novelle-charcoal text-white border border-white/70 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5 text-center">
+            EXPLORE LOOKS
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. Featured Collection / Products Grid
+       ========================================================================== -->
+  <section class="py-20 lg:py-28 bg-novelle-cream" id="shop">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header & Filter Pills -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-novelle-border pb-6">
+        <div>
+          <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-1">SHOP</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal tracking-wide uppercase font-normal">
+            FEATURED COLLECTION
+          </h2>
+        </div>
+
+        <!-- Filter Pills Tabs -->
+        <div class="flex items-center gap-2 flex-wrap" role="tablist" aria-label="Category Filters">
+          <button class="filter-tab active px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="all">All</button>
+          <button class="filter-tab px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="dresses">Dresses</button>
+          <button class="filter-tab px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="tops">Tops</button>
+          <button class="filter-tab px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="bottoms">Bottoms</button>
+          <button class="filter-tab px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="outerwear">Outerwear</button>
+          <button class="filter-tab px-4 py-1.5 text-xs uppercase tracking-wider rounded-full font-medium transition-all" data-category="accessories">Accessories</button>
+        </div>
+      </div>
+
+      <!-- Responsive Product Cards Grid (6 Products) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 lg:gap-5" id="productGrid">
+        
+        <!-- Product 1 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="dresses" data-id="101" data-name="Linen Midi Dress" data-price="4990" data-image="assets/images/prod_1.jpg">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/101" class="block w-full h-full">
+              <img src="assets/images/prod_1.jpg" alt="Linen Midi Dress" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="101">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Dresses</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/101" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Linen Midi Dress">Linen Midi Dress</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 4,990</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="101">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="outerwear" data-id="102" data-name="Tailored Warm" data-price="5190" data-image="assets/images/prod_2.jpg">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/102" class="block w-full h-full">
+              <img src="assets/images/prod_2.jpg" alt="Tailored Warm" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="102">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Outerwear</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/102" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Tailored Warm">Tailored Warm</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 5,190</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="102">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="tops" data-id="103" data-name="Knit Top" data-price="2990" data-image="assets/images/prod_3.jpg">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/103" class="block w-full h-full">
+              <img src="assets/images/prod_3.jpg" alt="Knit Top" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="103">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Tops</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/103" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Knit Top">Knit Top</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 2,990</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="103">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="bottoms" data-id="104" data-name="Wide Leg Trousers" data-price="3490" data-image="assets/images/prod_4.jpg">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/104" class="block w-full h-full">
+              <img src="assets/images/prod_4.jpg" alt="Wide Leg Trousers" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="104">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Bottoms</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/104" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Wide Leg Trousers">Wide Leg Trousers</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 3,490</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="104">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="dresses" data-id="105" data-name="Shirt Dress" data-price="4490" data-image="assets/images/prod_5.jpg">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/105" class="block w-full h-full">
+              <img src="assets/images/prod_5.jpg" alt="Shirt Dress" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="105">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Dresses</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/105" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Shirt Dress">Shirt Dress</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 4,490</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="105">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product-item group flex flex-col bg-transparent" data-category="tops" data-id="106" data-name="Knit Sweater" data-price="3990" data-image="assets/images/prod_6.png">
+          <div class="relative aspect-[3/4] bg-novelle-soft overflow-hidden mb-3.5">
+            <a href="/product/106" class="block w-full h-full">
+              <img src="assets/images/prod_6.png" alt="Knit Sweater" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy">
+            </a>
+            <button class="wishlist-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-novelle-charcoal hover:text-rose-600 flex items-center justify-center backdrop-blur-sm shadow-sm transition-all duration-200 z-10" aria-label="Add to Wishlist" data-id="106">
+              <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-black/40 text-white text-[10px] tracking-wider uppercase backdrop-blur-xs font-light">Tops</span>
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <a href="/product/106" class="hover:text-novelle-taupe transition-colors">
+                <h3 class="text-xs sm:text-sm font-normal text-novelle-charcoal truncate mb-1" title="Knit Sweater">Knit Sweater</h3>
+              </a>
+              <p class="text-xs sm:text-sm font-semibold text-novelle-charcoal mb-3">₹ 3,990</p>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 px-3 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors duration-200 text-center" data-id="106">
+              ADD TO CART
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. About Us / Signature Style Section
+       ========================================================================== -->
+  <section class="py-20 lg:py-28 bg-novelle-soft border-t border-b border-novelle-border/60" id="about">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Supplied Lifestyle Image -->
+        <div class="lg:col-span-6 order-1">
+          <div class="relative aspect-[4/3.2] overflow-hidden shadow-sm border border-novelle-border/80">
+            <img src="assets/images/about.jpg" alt="Novelle Craftsmanship and Tailoring" class="w-full h-full object-cover object-center" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Right Column: Editorial Statement & Statistics -->
+        <div class="lg:col-span-6 order-2">
+          <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-2">ABOUT US</span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-novelle-charcoal tracking-wide uppercase font-normal leading-[1.12] mb-6">
+            CRAFTED FOR YOUR<br>SIGNATURE STYLE
+          </h2>
+          <p class="text-sm sm:text-base text-novelle-muted font-light leading-relaxed mb-10">
+            At Novelle, we believe fashion is more than just what you wear &mdash; it's how you feel. Our collections are thoughtfully curated for modern women who value quality, comfort and timeless elegance. From everyday essentials to statement pieces, we bring you styles that make you feel confident, effortless and uniquely you.
+          </p>
+
+          <!-- 3 Statistics Counters with dividing borders -->
+          <div class="grid grid-cols-3 border-t border-novelle-border pt-6">
+            <div class="pr-4 sm:pr-6 border-r border-novelle-border">
+              <span class="font-serif text-3xl sm:text-4xl text-novelle-charcoal block mb-1">12+</span>
+              <span class="text-xs uppercase tracking-wider text-novelle-muted">Collections</span>
+            </div>
+            <div class="px-4 sm:px-6 border-r border-novelle-border">
+              <span class="font-serif text-3xl sm:text-4xl text-novelle-charcoal block mb-1">8K+</span>
+              <span class="text-xs uppercase tracking-wider text-novelle-muted">Happy Customers</span>
+            </div>
+            <div class="pl-4 sm:pl-6">
+              <span class="font-serif text-3xl sm:text-4xl text-novelle-charcoal block mb-1">100%</span>
+              <span class="text-xs uppercase tracking-wider text-novelle-muted">Curated Style</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. Promotional Banner ("THE NEW SEASON")
+       ========================================================================== -->
+  <section class="bg-[#836754] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[420px]">
+        
+        <!-- Left Editorial Copy Box -->
+        <div class="lg:col-span-6 px-8 sm:px-12 lg:px-16 py-16 lg:py-20 flex flex-col justify-center items-start">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wider font-normal mb-4">
+            THE NEW SEASON
+          </h2>
+          <p class="text-sm sm:text-base text-white/90 font-light leading-relaxed mb-8 max-w-md">
+            Fresh styles. Timeless pieces. A new chapter in your wardrobe.
+          </p>
+          <a href="#categories" class="inline-flex items-center justify-center px-7 py-3 border border-white/80 hover:bg-white hover:text-[#836754] text-white text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300">
+            DISCOVER COLLECTION &nbsp;&rarr;
+          </a>
+        </div>
+
+        <!-- Right Supplied Campaign Image -->
+        <div class="lg:col-span-6 relative min-h-[300px] lg:min-h-full">
+          <img src="assets/images/new_season.jpg" alt="The New Season Campaign" class="w-full h-full object-cover object-[center_25%]">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Shop by Categories Section
+       ========================================================================== -->
+  <section class="py-20 lg:py-28 bg-novelle-cream" id="categories">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header with dividing line -->
+      <div class="flex items-center justify-between mb-12">
+        <div class="flex items-baseline gap-4">
+          <div>
+            <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-1">SHOP BY</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal tracking-wide uppercase font-normal">
+              CATEGORIES
+            </h2>
+          </div>
+        </div>
+        <div class="hidden md:block flex-grow h-[1px] bg-novelle-border mx-8"></div>
+        <a href="#shop" class="text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal hover:text-novelle-taupe transition-colors inline-flex items-center gap-1.5 whitespace-nowrap">
+          VIEW ALL &nbsp;&rarr;
+        </a>
+      </div>
+
+      <!-- 3 Category Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Category 1: Dresses -->
+        <a href="#shop" class="category-card group relative aspect-[4/3.5] overflow-hidden bg-novelle-charcoal block" data-filter="dresses">
+          <img src="assets/images/cat_dresses.jpg" alt="Dresses Category" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-6 sm:p-8">
+            <div class="text-white w-full flex items-end justify-between">
+              <div>
+                <h3 class="font-serif text-2xl tracking-wide uppercase font-normal mb-1">DRESSES</h3>
+                <p class="text-xs text-white/80 font-light">Grace in every step</p>
+              </div>
+              <span class="text-lg text-white group-hover:translate-x-1.5 transition-transform duration-300">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Category 2: Tailoring -->
+        <a href="#shop" class="category-card group relative aspect-[4/3.5] overflow-hidden bg-novelle-charcoal block" data-filter="outerwear">
+          <img src="assets/images/cat_tailoring.jpg" alt="Tailoring Category" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-6 sm:p-8">
+            <div class="text-white w-full flex items-end justify-between">
+              <div>
+                <h3 class="font-serif text-2xl tracking-wide uppercase font-normal mb-1">TAILORING</h3>
+                <p class="text-xs text-white/80 font-light">Power in simplicity</p>
+              </div>
+              <span class="text-lg text-white group-hover:translate-x-1.5 transition-transform duration-300">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Category 3: Essentials -->
+        <a href="#shop" class="category-card group relative aspect-[4/3.5] overflow-hidden bg-novelle-charcoal block" data-filter="tops">
+          <img src="assets/images/cat_essentials.jpg" alt="Essentials Category" class="w-full h-full object-cover object-[center_30%] group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-6 sm:p-8">
+            <div class="text-white w-full flex items-end justify-between">
+              <div>
+                <h3 class="font-serif text-2xl tracking-wide uppercase font-normal mb-1">ESSENTIALS</h3>
+                <p class="text-xs text-white/80 font-light">Everyday must-haves</p>
+              </div>
+              <span class="text-lg text-white group-hover:translate-x-1.5 transition-transform duration-300">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. Testimonials Section
+       ========================================================================== -->
+  <section class="py-20 lg:py-28 bg-novelle-cream border-t border-novelle-border/60">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="flex items-center justify-between mb-12">
+        <div>
+          <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-1">TESTIMONIALS</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal tracking-wide uppercase font-normal">
+            WHAT OUR CUSTOMERS SAY
+          </h2>
+        </div>
+        <div class="hidden md:block flex-grow h-[1px] bg-novelle-border mx-8"></div>
+        <a href="#reviews" class="text-xs uppercase tracking-[0.2em] font-medium text-novelle-charcoal hover:text-novelle-taupe transition-colors inline-flex items-center gap-1.5 whitespace-nowrap">
+          VIEW ALL &nbsp;&rarr;
+        </a>
+      </div>
+
+      <!-- 3 Testimonial Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-8 border border-novelle-border shadow-[0_2px_12px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3.5 mb-5">
+              <img src="assets/images/avatar_1.png" alt="Ananya R." class="w-11 h-11 rounded-full object-cover">
+              <div>
+                <h4 class="text-sm font-semibold text-novelle-charcoal">Ananya R.</h4>
+                <div class="text-amber-600 text-xs tracking-widest mt-0.5">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-sm text-novelle-muted font-light italic leading-relaxed">
+              &ldquo;Absolutely in love with the quality and fit! Novelle has become my go-to for elegant and comfortable outfits.&rdquo;
+            </p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-8 border border-novelle-border shadow-[0_2px_12px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3.5 mb-5">
+              <img src="assets/images/avatar_2.png" alt="Sneha R." class="w-11 h-11 rounded-full object-cover">
+              <div>
+                <h4 class="text-sm font-semibold text-novelle-charcoal">Sneha R.</h4>
+                <div class="text-amber-600 text-xs tracking-widest mt-0.5">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-sm text-novelle-muted font-light italic leading-relaxed">
+              &ldquo;The designs are so unique and classy. I always get compliments whenever I wear something from Novelle!&rdquo;
+            </p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-8 border border-novelle-border shadow-[0_2px_12px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3.5 mb-5">
+              <img src="assets/images/avatar_3.png" alt="Meera S." class="w-11 h-11 rounded-full object-cover">
+              <div>
+                <h4 class="text-sm font-semibold text-novelle-charcoal">Meera S.</h4>
+                <div class="text-amber-600 text-xs tracking-widest mt-0.5">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-sm text-novelle-muted font-light italic leading-relaxed">
+              &ldquo;Beautiful collection, excellent customer service and super fast delivery. Highly recommend!&rdquo;
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. Contact Section (3-Column Layout)
+       ========================================================================== -->
+  <section class="py-20 lg:py-28 bg-novelle-cream border-t border-novelle-border/60" id="contact">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left: Lifestyle Image -->
+        <div class="lg:col-span-4 hidden lg:block">
+          <div class="aspect-[3/4.2] overflow-hidden shadow-sm">
+            <img src="assets/images/contact.jpg" alt="NOVELLE Everyday Elegance Stylist" class="w-full h-full object-cover object-center">
+          </div>
+        </div>
+
+        <!-- Center: Working Interactive Form -->
+        <div class="lg:col-span-5">
+          <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-1">GET IN TOUCH</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal tracking-wide uppercase font-normal mb-3">
+            CONTACT US
+          </h2>
+          <p class="text-xs sm:text-sm text-novelle-muted font-light leading-relaxed mb-6">
+            We'd love to hear from you. Whether you have a question, feedback or need assistance, our team is here to help.
+          </p>
+
+          <form id="contactForm" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contactName" class="sr-only">Name</label>
+                <input type="text" id="contactName" required placeholder="Name *" class="w-full px-4 py-3 bg-transparent border border-novelle-border text-xs focus:outline-none focus:border-novelle-taupe transition-colors text-novelle-charcoal">
+              </div>
+              <div>
+                <label for="contactEmail" class="sr-only">Email</label>
+                <input type="email" id="contactEmail" required placeholder="Email *" class="w-full px-4 py-3 bg-transparent border border-novelle-border text-xs focus:outline-none focus:border-novelle-taupe transition-colors text-novelle-charcoal">
+              </div>
+            </div>
+            <div>
+              <label for="contactMessage" class="sr-only">Message</label>
+              <textarea id="contactMessage" rows="4" required placeholder="Message *" class="w-full px-4 py-3 bg-transparent border border-novelle-border text-xs focus:outline-none focus:border-novelle-taupe transition-colors text-novelle-charcoal resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3.5 bg-novelle-taupe hover:bg-novelle-taupe-dark text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-200 text-center">
+              SEND MESSAGE &nbsp;&rarr;
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Contact Information -->
+        <div class="lg:col-span-3 lg:border-l lg:border-novelle-border lg:pl-8 space-y-6 pt-6 lg:pt-0 border-t lg:border-t-0 border-novelle-border">
+          <div class="flex items-start gap-3.5">
+            <div class="text-novelle-taupe mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-xs uppercase tracking-wider font-semibold text-novelle-charcoal mb-0.5">Email</h5>
+              <a href="mailto:hello@novelle.com" class="text-xs text-novelle-muted hover:text-novelle-charcoal transition-colors">hello@novelle.com</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <div class="text-novelle-taupe mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-xs uppercase tracking-wider font-semibold text-novelle-charcoal mb-0.5">Phone</h5>
+              <a href="tel:+919876543210" class="text-xs text-novelle-muted hover:text-novelle-charcoal transition-colors">+91 98765 43210</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <div class="text-novelle-taupe mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-xs uppercase tracking-wider font-semibold text-novelle-charcoal mb-0.5">Location</h5>
+              <p class="text-xs text-novelle-muted font-light leading-relaxed">123 Fashion Street, Bangalore, India - 560001</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. Newsletter Section ("JOIN THE NOVELLE CIRCLE")
+       ========================================================================== -->
+  <section class="py-16 lg:py-20 bg-novelle-soft border-t border-b border-novelle-border">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <span class="block text-xs uppercase tracking-[0.25em] text-novelle-muted font-medium mb-1">STAY UPDATED</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-novelle-charcoal tracking-wide uppercase font-normal mb-3">
+        JOIN THE NOVELLE CIRCLE
+      </h2>
+      <p class="text-xs sm:text-sm text-novelle-muted font-light leading-relaxed mb-8 max-w-md mx-auto">
+        Be the first to know about new collections, exclusive offers and style tips.
+      </p>
+
+      <form id="newsletterForm" class="flex flex-col sm:flex-row max-w-md mx-auto border border-novelle-border bg-white shadow-xs">
+        <label for="newsletterEmail" class="sr-only">Your email address</label>
+        <input type="email" id="newsletterEmail" required placeholder="Enter your email address" class="flex-grow px-4 py-3.5 text-xs text-novelle-charcoal focus:outline-none bg-transparent">
+        <button type="submit" class="px-7 py-3.5 bg-novelle-charcoal hover:bg-novelle-taupe text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-200 whitespace-nowrap">
+          SUBSCRIBE &nbsp;&rarr;
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. Multi-Column Luxury Footer
+       ========================================================================== -->
+  <footer class="bg-novelle-charcoal text-white pt-20 pb-12">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Top Grid: 4/5 Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="lg:col-span-4">
+          <a href="#home" class="font-serif text-3xl tracking-[0.28em] font-normal uppercase text-white block mb-3">
+            NOVELLE
+          </a>
+          <p class="text-xs text-white/60 tracking-wider mb-6 font-light">
+            Style &middot; Quality &middot; You
+          </p>
+          <p class="text-xs text-white/60 font-light leading-relaxed max-w-xs mb-6">
+            Crafted for the modern woman who embraces quiet luxury, mindful craftsmanship, and enduring elegance.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center space-x-4 text-white/70">
+            <a href="#instagram" class="hover:text-white transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#facebook" class="hover:text-white transition-colors" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/></svg>
+            </a>
+            <a href="#pinterest" class="hover:text-white transition-colors" aria-label="Pinterest">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.334 1.357-.053.224-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#youtube" class="hover:text-white transition-colors" aria-label="YouTube">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Shop Links -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs uppercase tracking-[0.2em] font-semibold text-white mb-5">Shop</h4>
+          <ul class="space-y-3 text-xs text-white/60 font-light">
+            <li><a href="#shop" class="hover:text-white transition-colors">New Arrivals</a></li>
+            <li><a href="#shop" class="hover:text-white transition-colors">Dresses</a></li>
+            <li><a href="#shop" class="hover:text-white transition-colors">Tops</a></li>
+            <li><a href="#shop" class="hover:text-white transition-colors">Bottoms</a></li>
+            <li><a href="#shop" class="hover:text-white transition-colors">Accessories</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: About Links -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs uppercase tracking-[0.2em] font-semibold text-white mb-5">About</h4>
+          <ul class="space-y-3 text-xs text-white/60 font-light">
+            <li><a href="#about" class="hover:text-white transition-colors">Our Story</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">Sustainability</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">Journal &amp; Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Help Links -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs uppercase tracking-[0.2em] font-semibold text-white mb-5">Help</h4>
+          <ul class="space-y-3 text-xs text-white/60 font-light">
+            <li><a href="#contact" class="hover:text-white transition-colors">Shipping &amp; Delivery</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Returns &amp; Exchanges</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Size Guide</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact & Location Info -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs uppercase tracking-[0.2em] font-semibold text-white mb-5">Contact</h4>
+          <div class="space-y-3 text-xs text-white/60 font-light">
+            <p><a href="mailto:hello@novelle.com" class="hover:text-white transition-colors">hello@novelle.com</a></p>
+            <p><a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a></p>
+            <p class="leading-relaxed">Bangalore, India</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright & Payment Badges -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
+        <p>&copy; 2026 NOVELLE. All rights reserved.</p>
+        <div class="flex items-center space-x-2.5">
+          <span class="px-2 py-0.5 bg-white text-novelle-charcoal rounded text-[10px] font-bold tracking-wider">VISA</span>
+          <span class="px-2 py-0.5 bg-white text-novelle-charcoal rounded text-[10px] font-bold tracking-wider">MC</span>
+          <span class="px-2 py-0.5 bg-white text-novelle-charcoal rounded text-[10px] font-bold tracking-wider">RUPAY</span>
+          <span class="px-2 py-0.5 bg-white text-novelle-charcoal rounded text-[10px] font-bold tracking-wider">PAYPAL</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Slide-Over Cart Drawer
+       ========================================================================== -->
+  <div id="cartDrawerBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-novelle-cream shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
+    <!-- Cart Header -->
+    <div class="p-6 border-b border-novelle-border flex items-center justify-between bg-white">
+      <div class="flex items-center gap-2">
+        <h3 class="font-serif text-2xl uppercase tracking-wider text-novelle-charcoal">Your Bag</h3>
+        <span id="cartDrawerBadge" class="text-xs bg-novelle-soft text-novelle-taupe px-2 py-0.5 rounded-full font-medium">0 items</span>
+      </div>
+      <button id="cartDrawerClose" class="p-1.5 text-novelle-charcoal hover:text-novelle-taupe transition-colors" aria-label="Close Bag">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Notice Bar -->
+    <div class="bg-novelle-soft px-6 py-2.5 border-b border-novelle-border/60 text-xs text-novelle-charcoal text-center">
+      <span id="freeShippingNotice">Enjoy <strong>Complimentary Shipping</strong> across India</span>
+    </div>
+
+    <!-- Cart Items Scrollable List -->
+    <div class="flex-grow overflow-y-auto p-6 space-y-5 divide-y divide-novelle-border/60" id="cartItemsContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Cart Footer & Checkout Action -->
+    <div class="p-6 border-t border-novelle-border bg-white space-y-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-novelle-muted uppercase tracking-wider text-xs">Subtotal</span>
+        <span id="cartSubtotal" class="font-serif text-xl font-medium text-novelle-charcoal">₹ 0</span>
+      </div>
+      <p class="text-[11px] text-novelle-muted font-light">Taxes calculated at checkout. Free 7-day returns.</p>
+      <div class="grid grid-cols-2 gap-3">
+        <a href="/cart" class="py-3.5 bg-novelle-soft hover:bg-novelle-sand text-novelle-charcoal text-[11px] uppercase tracking-[0.16em] font-medium transition-colors text-center block">
+          View Bag
+        </a>
+        <a href="/checkout" id="checkoutBtn" class="py-3.5 bg-novelle-charcoal hover:bg-novelle-taupe text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors text-center block">
+          Checkout &rarr;
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       Interactive Mobile Navigation Drawer
+       ========================================================================== -->
+  <div id="mobileNavBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileNavDrawer" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-novelle-cream shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
+    <div class="p-6 border-b border-novelle-border flex items-center justify-between">
+      <span class="font-serif text-2xl tracking-[0.25em] text-novelle-charcoal">NOVELLE</span>
+      <button id="mobileNavClose" class="p-1 text-novelle-charcoal hover:text-novelle-taupe transition-colors" aria-label="Close Navigation">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="p-6 space-y-5 text-sm uppercase tracking-[0.18em] font-medium text-novelle-charcoal">
+      <a href="/" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Home</a>
+      <a href="/search" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Search Collection</a>
+      <a href="/#shop" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Shop</a>
+      <a href="/#categories" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Collections</a>
+      <a href="/wishlist" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Wishlist</a>
+      <a href="/cart" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Shopping Bag</a>
+      <a href="/#about" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">About Us</a>
+      <a href="/#contact" class="mobile-link block py-1 hover:text-novelle-taupe transition-colors">Contact</a>
+    </nav>
+    <div class="mt-auto p-6 border-t border-novelle-border/80 text-xs text-novelle-muted">
+      <p class="font-serif italic text-sm text-novelle-charcoal mb-1">The Art of Everyday Elegance</p>
+      <p>&copy; 2026 NOVELLE Fashion</p>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       Interactive Search Overlay Modal
+       ========================================================================== -->
+  <div id="searchModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-start justify-center pt-24 px-6">
+    <div class="bg-white w-full max-w-2xl p-6 sm:p-8 shadow-2xl border border-novelle-border transform -translate-y-6 transition-transform duration-300">
+      <div class="flex items-center justify-between pb-4 border-b border-novelle-border mb-6">
+        <span class="text-xs uppercase tracking-[0.2em] text-novelle-muted font-medium">Search Collection</span>
+        <button id="searchCloseBtn" class="text-novelle-charcoal hover:text-novelle-taupe p-1" aria-label="Close search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="relative border-b-2 border-novelle-charcoal flex items-center">
+        <input type="text" id="searchInput" placeholder="Search by keyword (e.g., dress, linen, tailored, sweater)..." class="w-full pb-3 pr-10 text-base sm:text-lg focus:outline-none text-novelle-charcoal bg-transparent font-serif placeholder:font-sans placeholder:text-xs placeholder:text-novelle-muted">
+        <button id="searchSubmitBtn" type="button" class="absolute right-0 top-1/2 -translate-y-1/2 pb-3 text-novelle-charcoal hover:text-novelle-taupe transition-colors p-1" aria-label="Submit search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+      <!-- Live Search Results Dropdown -->
+      <div id="searchLiveResults" class="hidden mt-4 max-h-72 overflow-y-auto divide-y divide-novelle-border/60"></div>
+      <div id="searchQuickSuggestions" class="mt-6">
+        <p class="text-[11px] uppercase tracking-wider text-novelle-muted mb-3 font-medium">Quick Suggestions:</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button class="search-tag px-3 py-1 bg-novelle-soft hover:bg-novelle-sand transition-colors text-novelle-charcoal">Linen Dress</button>
+          <button class="search-tag px-3 py-1 bg-novelle-soft hover:bg-novelle-sand transition-colors text-novelle-charcoal">Tailored Warm</button>
+          <button class="search-tag px-3 py-1 bg-novelle-soft hover:bg-novelle-sand transition-colors text-novelle-charcoal">Knit Tops</button>
+          <button class="search-tag px-3 py-1 bg-novelle-soft hover:bg-novelle-sand transition-colors text-novelle-charcoal">Trousers</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       On-Screen Success / Information Toast Container
+       ========================================================================== -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Global Store & Shared Logic -->
+  <script src="js/store.js"></script>
+  <!-- Page Specific Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
